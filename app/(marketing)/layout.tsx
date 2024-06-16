@@ -1,25 +1,17 @@
 import { MainNav } from "@/components/main-nav";
-// import { MobileNav } from "@/components/mobile-nav";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { fontSans } from "@/lib/fonts";
 import Link from "@/node_modules/next/link";
 import { buttonVariants } from "@/components/ui/button";
-import { ThemeProvider } from "@/components/theme-provider";
+// import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/toggle";
 // import HeroPage from "./hero/page";
 import { SiteFooter } from "@/components/site-footer";
 
 // import PricingPage from "./pricing/page";
 import MobileNav from "@/components/mobile-nav";
-import { getCurrentUser } from "@/lib/session";
-import { getAuthSession } from "@/lib/auth";
-import { notFound } from "next/navigation";
-import DashboardLayout from "../(dashboard)/layout";
-import { useRouter } from "next/navigation";
-import DashboardPage from "../(dashboard)/dashboard/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,10 +25,10 @@ export default async function MarketingLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getCurrentUser();
-  const session = await getAuthSession();
+  // const user = await getCurrentUser();
+  // const session = await getAuthSession();
 
-  const isAuthenticated = !!user;
+  // const isAuthenticated = !!user;
 
   return (
     // <html lang="en" suppressHydrationWarning>
@@ -47,29 +39,8 @@ export default async function MarketingLayout({
     //     >
 
     <>
-      {isAuthenticated ? (
-        // User is authenticated, show dashboard layout
-        <>
-          {/* <div> */}
-          <main className="flex w-full flex-col justify-center ">
-            <DashboardLayout>
-              <DashboardPage />
-            </DashboardLayout>
-            {/* <Link
-              href="/dashboard"
-              className={cn(
-                buttonVariants({ variant: "secondary", size: "sm" }),
-                "px-4"
-              )}
-            >
-              Oops!! Click here to go back to QuotesAI
-            </Link> */}
-          </main>
-
-          {/* </div> */}
-        </>
-      ) : (
-        <>
+      
+        
           <div className="flex min-h-screen flex-col">
             <header className="h-16 container sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
               <div className="flex h-16 items-center justify-between py-6 w-full">
@@ -99,8 +70,7 @@ export default async function MarketingLayout({
           </div>
 
           <SiteFooter />
-        </>
-      )}
+        
     </>
     //     </body>
     // </html>
